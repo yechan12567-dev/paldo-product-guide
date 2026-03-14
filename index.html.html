@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Paldo Global Product Guide</title>
+<style>
+  :root{
+    --red:#cf2027;
+    --red-dark:#b61b22;
+    --text:#111827;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --soft:#fafafa;
+    --chip:#fef2f2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+  img{display:block;max-width:100%}
+  .container{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  .logo-wrap{padding:30px 0;text-align:center}
+  .logo-wrap img{height:140px;width:auto;margin:0 auto}
+  .hero{
+    background:linear-gradient(135deg,#fff7f7 0%, #fff 58%, #fff4f1 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{padding:40px 0 34px;text-align:center}
+  .eyebrow{
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    margin:14px 0 0;
+    font-size:48px;
+    line-height:.98;
+    font-weight:900;
+    letter-spacing:-.04em;
+  }
+  .hero h1 span{display:block;color:#333;}
+  .hero p{
+    max-width:760px;
+    margin:16px auto 0;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  .tabs-wrap{border-bottom:1px solid var(--line);background:#fff}
+  .tabs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 0}
+  .tab{
+    border:1px solid #d1d5db;
+    background:#fff;
+    border-radius:999px;
+    padding:11px 18px;
+    font-size:14px;
+    font-weight:800;
+    color:#374151;
+    cursor:pointer;
+  }
+  .tab.active{
+    background:#111827;
+    border-color:#111827;
+    color:#fff;
+  }
+
+  .main{padding:34px 0 60px}
+  .top-grid{
+    display:grid;
+    grid-template-columns:420px minmax(0,1fr);
+    gap:42px;
+    align-items:center;
+  }
+  .image-box{
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(180deg,#fafafa 0%, #f3f4f6 100%);
+    padding:26px;
+  }
+  .image-frame{
+    min-height:360px;
+    border-radius:22px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .image-frame img{max-height:330px;width:auto;object-fit:contain}
+  .title{margin:0;font-size:52px;line-height:.95;font-weight:900;letter-spacing:-.05em}
+  .subtitle{margin:14px 0 0;color:var(--muted);font-size:19px}
+  .desc-title{
+    margin:26px 0 0;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:#9ca3af;
+  }
+  .desc{
+    margin-top:14px;
+    font-size:17px;
+    line-height:1.85;
+    color:#374151;
+  }
+  .desc p{margin:0 0 6px}
+
+  .section{margin-top:42px}
+  .section h2{
+    margin:0;
+    font-size:30px;
+    line-height:1.05;
+    font-weight:900;
+    letter-spacing:-.03em;
+  }
+
+  .nutrition-grid{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .nutrition-box{
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:16px;
+    background:#fff;
+  }
+  .nutrition-box .label{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#9ca3af;
+  }
+  .nutrition-box .value{
+    margin-top:8px;
+    font-size:18px;
+    font-weight:900;
+  }
+
+  .ingredient-list{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .ingredient{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:14px;
+    font-weight:700;
+    color:#374151;
+  }
+
+  .allergen-box{
+    margin-top:18px;
+    border:1px solid #fecaca;
+    background:var(--chip);
+    border-radius:22px;
+    padding:18px;
+  }
+  .allergen-title{
+    color:#b91c1c;
+    font-size:14px;
+    font-weight:800;
+  }
+  .chips{
+    margin-top:12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .chip{
+    border:1px solid #fecaca;
+    background:#fff;
+    color:#b91c1c;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:14px;
+    font-weight:800;
+  }
+
+  .cook-box{
+    margin-top:18px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:20px;
+    background:#fff;
+  }
+  .cook-subtitle{font-size:16px;font-weight:900}
+  .steps{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .steps li{display:flex;gap:12px;align-items:flex-start;color:#374151;line-height:1.8}
+  .num{
+    width:28px;height:28px;border-radius:999px;background:#111827;color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex:0 0 auto;margin-top:2px;
+  }
+
+  @media (max-width:900px){
+    .top-grid{grid-template-columns:1fr}
+    .nutrition-grid{grid-template-columns:repeat(2,1fr)}
+    .title{font-size:40px}
+    .hero h1{font-size:38px}
+    .logo-wrap img{height:110px}
+  }
+  @media (max-width:640px){
+    .nutrition-grid{grid-template-columns:1fr}
+    .title{font-size:34px}
+    .hero h1{font-size:32px}
+    .hero p{font-size:15px}
+    .image-frame{min-height:280px}
+    .image-frame img{max-height:250px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container logo-wrap">
+    <img src="https://paldofood.co.kr/skin/images/sub/ci-logotype.png" alt="Paldo Logo">
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">Paldo Global Product Guide</div>
+    <h1>Experience<span>True Taste of Korea with Paldo</span></h1>
+    <p>A clean product page for international customers with product description, ingredients, nutrition facts, allergy information, and cooking instructions.</p>
+  </div>
+</section>
+
+<section class="tabs-wrap">
+  <div class="container">
+    <div class="tabs" id="tabs"></div>
+  </div>
+</section>
+
+<main class="container main">
+  <section class="top-grid">
+    <div class="image-box">
+      <div class="image-frame" id="image-frame"></div>
+    </div>
+    <div>
+      <h1 class="title" id="name"></h1>
+      <p class="subtitle" id="subtitle"></p>
+      <div class="desc-title">Product Description</div>
+      <div class="desc" id="description"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Ingredients</h2>
+    <div class="ingredient-list" id="ingredients"></div>
+  </section>
+
+  <section class="section">
+    <h2>Nutrition Facts</h2>
+    <div class="nutrition-grid" id="nutrition"></div>
+  </section>
+
+  <section class="section">
+    <h2>Allergy Info</h2>
+    <div class="allergen-box">
+      <div class="allergen-title">Contains</div>
+      <div class="chips" id="allergens"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Cooking Description</h2>
+    <div class="cook-box">
+      <div class="cook-subtitle" id="cook-title"></div>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </section>
+</main>
+
+<script>
+const products = [
+  {id:"bibimblue",
+  name:"Bibimmen The Blue",
+  subtitle:"Cold spicy bibim noodles with deeper flavor",
+  image:"비빔면더블루.png",
+  description:[
+    "A richer and deeper version of Paldo Bibimmen",
+    "Sweet and spicy sauce with enhanced umami flavor" 
+  ],
+  ingredients:[
+    "Wheat Flour",
+    "Palm Oil",
+    "Potato Starch",
+    "Salt",
+    "Sugar",
+    "Garlic",
+    "Green Onion",
+  ],
+  nutrition:[
+    {label:"Serving Size", value:"135 g"},
+    {label:"Calories", value:"535 kcal"},
+    {label:"Carbohydrate", value:"86 g"},
+    {label:"Protein", value:"10 g"},
+    {label:"Fat", value:"17 g"},
+    {label:"Sodium", value:"1,340 mg"}
+  ],
+  allergens:["Wheat","Soy","Sesame","Mustard"],
+  cookTitle:"Eating Cool (Original Korean Recipe)",
+  steps:[
+    "Put the noodles into 600 mL of boiling water and boil for 3 minutes.",
+    "Drain the water and rinse noodles in cold water.",
+    "Place noodles in a bowl and add the sauce.",
+    "Mix well and enjoy."
+  ]
+  },
+  {
+    id:"bibim",
+    name:"Bibimmen",
+    subtitle:"With Soupless, Pack type",
+    image:"비빔면.png",
+    description:[
+      "Noodle with spicy and sweet seasonings",
+      "World's first spread & stir instant noodles"
+    ],
+    ingredients:["Wheat Flour","Palm Oil","Potato Starch","Soy Sauce","Sugar","Garlic","Onion","Sesame Oil","Mustard"],
+    nutrition:[
+      {label:"Serving Size", value:"130 g"},
+      {label:"Calories", value:"530 kcal"},
+      {label:"Carbohydrate", value:"80 g"},
+      {label:"Protein", value:"9 g"},
+      {label:"Fat", value:"19 g"},
+      {label:"Sodium", value:"1,230 mg"}
+    ],
+    allergens:["Sesame","Soy","Wheat","Mustard"],
+    cookTitle:"Eating Cool (Original Korean Recipe)",
+    steps:[
+      "Put the noodles into 600 mL of boiling water and boil for 3 minutes.",
+      "Drain out water and rinse with cold water.",
+      "Place noodles in a bowl and add the sauce.",
+      "Stir well and enjoy."
+    ]
+  },
+  {
+    id:"wang",
+    name:"Jumbo noodle Seafood flavor",
+    subtitle:"Large Korean cup noodle soup",
+    image:"왕뚜껑.png",
+    description:[
+      "Big bowl format with rich broth",
+      "Comfortable and familiar Korean cup noodle style"
+    ],
+    ingredients:["Wheat Flour","Palm Oil","Starch","Salt","Soy Sauce Powder","Garlic","Red Pepper Seasoning","Vegetable flavoring"],
+    nutrition:[
+      {label:"Serving Size", value:"120 g"},
+      {label:"Calories", value:"560 kcal"},
+      {label:"Carbohydrate", value:"79 g"},
+      {label:"Protein", value:"9 g"},
+      {label:"Fat", value:"23 g"},
+      {label:"Sodium", value:"2,090 mg"}
+    ],
+    allergens:["Wheat", "Soy", "Gluten", "Crustaceans(crab, shrimp, lobster)", "Mollusks(squid, mussel, oyster)"],
+    cookTitle:"Cooking Description",
+    steps:[
+      "Open the cap and add the soup base in to the cup",
+      "Pour hot water up to the inner line.",
+      "Close the cap and let it sit for 3 minutes.",
+      "Remove the cap, stir well, and enjoy!"
+    ]
+  },
+  {
+    id:"teumsae",
+    name:"Teumsae Ramen Entry Level",
+    subtitle:"Easy-entry spicy Korean soup noodles",
+    image:"틈새라면입문용.png",
+    description:[
+      "Approachable spicy profile for first-time Teumsae customers",
+      "Clear English ingredients and allergen view"
+    ],
+    ingredients:["Wheat Flour","Palm Oil","Potato Starch","Salt","Wheat Gluten","Chili Powder","Garlic","Onion Powder","Soy Sauce Powder","Vegetable Flakes"],
+    nutrition:[
+      {label:"Serving Size", value:"120 g"},
+      {label:"Calories", value:"505 kcal"},
+      {label:"Carbohydrate", value:"81 g"},
+      {label:"Protein", value:"11 g"},
+      {label:"Fat", value:"15 g"},
+      {label:"Sodium", value:"1,790 mg"}
+    ],
+    allergens:["Wheat","Soy","Eggs", "Milk", "Pork", "Beef"],
+    cookTitle:"Cooking Description",
+    steps:[
+      "Put noodles, powder soup, and flakes into 550 mL of boiling water.",
+      "Boil for 3 minutes and 30 seconds.",
+      "Stir evenly before serving.",
+      "Enjoy while hot."
+    ]
+  }
+];
+
+let activeId = "bibim";
+
+const tabs = document.getElementById("tabs");
+const imageFrame = document.getElementById("image-frame");
+const nameEl = document.getElementById("name");
+const subtitleEl = document.getElementById("subtitle");
+const descEl = document.getElementById("description");
+const ingredientsEl = document.getElementById("ingredients");
+const nutritionEl = document.getElementById("nutrition");
+const allergensEl = document.getElementById("allergens");
+const cookTitleEl = document.getElementById("cook-title");
+const stepsEl = document.getElementById("steps");
+
+function renderImage(src, alt){
+  imageFrame.innerHTML = "";
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = alt;
+  img.onerror = () => {
+    imageFrame.innerHTML = `<div style="text-align:center;color:#6b7280"><div style="display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;font-size:12px;font-weight:800;letter-spacing:.18em">PRODUCT IMAGE</div><div style="margin-top:18px;font-size:28px;font-weight:900;color:#111827">${alt}</div></div>`;
+  };
+  imageFrame.appendChild(img);
+}
+
+function renderTabs(){
+  tabs.innerHTML = "";
+  products.forEach(p => {
+    const btn = document.createElement("button");
+    btn.className = "tab" + (p.id === activeId ? " active" : "");
+    btn.textContent = p.name;
+    btn.onclick = () => { activeId = p.id; render(); };
+    tabs.appendChild(btn);
+  });
+}
+
+function render(){
+  const p = products.find(item => item.id === activeId) || products[0];
+  renderTabs();
+  renderImage(p.image, p.name);
+  nameEl.textContent = p.name;
+  subtitleEl.textContent = p.subtitle;
+  descEl.innerHTML = p.description.map(d => `<p>${d}</p>`).join("");
+  ingredientsEl.innerHTML = p.ingredients.map(i => `<span class="ingredient">${i}</span>`).join("");
+  nutritionEl.innerHTML = p.nutrition.map(n => `
+    <div class="nutrition-box">
+      <div class="label">${n.label}</div>
+      <div class="value">${n.value}</div>
+    </div>
+  `).join("");
+  allergensEl.innerHTML = p.allergens.map(a => `<span class="chip">${a}</span>`).join("");
+  cookTitleEl.textContent = p.cookTitle;
+  stepsEl.innerHTML = p.steps.map((s, i) => `<li><span class="num">${i+1}</span><span>${s}</span></li>`).join("");
+}
+
+render();
+</script>
+</body>
+</html>
